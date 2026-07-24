@@ -8,9 +8,6 @@
   An ongoing, community-maintained continuation of Reborn Storage for modern Minecraft versions and Refined Storage.
 </p>
 
-> [!WARNING]
-> Redone Storage is currently an **alpha** release. Back up important worlds before updating and test new builds before using them in a long-term world.
-
 ## Version support
 
 Redone Storage is intended to continue receiving ports for future Minecraft and Refined Storage releases.
