@@ -30,7 +30,6 @@ Redone Storage is intended to continue receiving ports for future Minecraft and 
 ## Required mods
 
 - Refined Storage
-- PolyLib
 
 ## Migration notice
 
