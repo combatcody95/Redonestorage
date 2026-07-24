@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DID",
+    "GRG",
+    "DGD"
+  ],
+  "key": {
+    "G": {
+      "item": "redonestorage:large_item_disk_part"
+    },
+    "D": {
+      "item": "refinedstorage:advanced_processor"
+    },
+    "I": {
+      "item": "refinedstorage:quartz_enriched_iron"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "result": {
+    "id": "redonestorage:larger_item_disk_part"
+  }
+}

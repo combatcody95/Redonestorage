@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EPE",
+    "EME",
+    "EAE"
+  ],
+  "key": {
+    "E": {
+      "item": "refinedstorage:quartz_enriched_iron"
+    },
+    "A": {
+      "item": "redonestorage:super_advanced_processor"
+    },
+    "M": {
+      "item": "refinedstorage:wireless_transmitter"
+    },
+    "P": {
+      "tag": "c:ender_pearls"
+    }
+  },
+  "result": {
+    "id": "redonestorage:advanced_wireless_transmitter"
+  }
+}

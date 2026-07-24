@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "redonestorage:small_item_disk",
+    "redonestorage:medium_item_disk",
+    "redonestorage:large_item_disk",
+    "redonestorage:larger_item_disk"
+  ]
+}

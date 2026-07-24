@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "refinedstorage:storage_housing"
+    },
+    {
+      "item": "redonestorage:small_item_disk_part"
+    }
+  ],
+  "result": {
+    "id": "redonestorage:small_item_disk"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "redonestorage:block/multiblock_cpu"
+    }
+  }
+}

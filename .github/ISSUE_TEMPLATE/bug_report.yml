@@ -1,0 +1,85 @@
+name: Bug report
+description: Report a reproducible problem with Redone Storage
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please complete every relevant field.
+
+  - type: input
+    id: redone-version
+    attributes:
+      label: Redone Storage version
+      placeholder: 6.0.0-alpha.6
+    validations:
+      required: true
+
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      placeholder: 1.21.1
+    validations:
+      required: true
+
+  - type: input
+    id: neoforge-version
+    attributes:
+      label: NeoForge version
+      placeholder: 21.1.234
+    validations:
+      required: true
+
+  - type: input
+    id: refined-storage-version
+    attributes:
+      label: Refined Storage version
+      placeholder: 2.0.9
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Explain the problem and what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Place...
+        2. Open...
+        3. Observe...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log or crash report
+      description: Drag and drop latest.log or the crash report here. Do not paste only the final error line.
+    validations:
+      required: true
+
+  - type: textarea
+    id: mod-list
+    attributes:
+      label: Other installed mods
+      description: Include a mod list or identify the modpack being used.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I removed older rebornstorage/redonestorage development JARs.
+          required: true
+        - label: I searched existing issues for the same problem.
+          required: true

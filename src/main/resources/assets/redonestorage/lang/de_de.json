@@ -1,0 +1,23 @@
+{
+  "itemGroup.redonestorage": "Redone Storage",
+  "item.redonestorage.small_item_disk": "256k Speicherzelle",
+  "item.redonestorage.medium_item_disk": "1024k Speicherzelle",
+  "item.redonestorage.large_item_disk": "4096k Speicherzelle",
+  "item.redonestorage.larger_item_disk": "16384k Speicherzelle",
+  "item.redonestorage.small_fluid_disk": "256k Flüssigspeicherzelle",
+  "item.redonestorage.medium_fluid_disk": "1024k Flüssigspeicherzelle",
+  "item.redonestorage.large_fluid_disk": "4096k Flüssigspeicherzelle",
+  "item.redonestorage.larger_fluid_disk": "16384k Flüssigspeicherzelle",
+  "item.redonestorage.small_item_disk_part": "256k Speicherkern",
+  "item.redonestorage.medium_item_disk_part": "1024k Speicherkern",
+  "item.redonestorage.large_item_disk_part": "4096k Speicherkern",
+  "item.redonestorage.larger_item_disk_part": "16384k Speicherkern",
+  "item.redonestorage.small_fluid_disk_part": "256k Flüssigspeicherkern",
+  "item.redonestorage.medium_fluid_disk_part": "1024k Flüssigspeicherkern",
+  "item.redonestorage.large_fluid_disk_part": "4096k Flüssigspeicherkern",
+  "item.redonestorage.larger_fluid_disk_part": "16384k Flüssigspeicherkern",
+  "block.redonestorage.multiblock_cpu": "Herstellungs-CPU",
+  "block.redonestorage.multiblock_heat": "Wärmeleiter",
+  "block.redonestorage.multiblock_frame": "Herstellungsrahmen",
+  "block.redonestorage.multiblock_storage": "Herstellungsspeicher"
+}

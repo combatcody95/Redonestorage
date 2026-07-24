@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "redonestorage:item/super_advanced_processor"
+  }
+}

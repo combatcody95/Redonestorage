@@ -1,0 +1,117 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+version = "${minecraft_version}-${mod_version}-neoforge"
+group = mod_group_id
+base { archivesName = mod_id }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    flatDir { dirs 'libs' }
+    maven { url = 'https://maven.neoforged.net/releases' }
+    maven { url = 'https://maven.creeperhost.net' }
+    mavenCentral()
+}
+
+neoForge {
+    version = project.neo_version
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+    runs {
+        client { client() }
+        server { server(); programArgument '--nogui' }
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').absolutePath,
+                '--existing', file('src/main/resources/').absolutePath
+        }
+        configureEach {
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            logLevel = org.slf4j.event.Level.INFO
+        }
+    }
+    mods {
+        "${mod_id}" { sourceSet(sourceSets.main) }
+    }
+}
+
+configurations { runtimeClasspath.extendsFrom localRuntime }
+
+dependencies {
+    implementation files('libs/refinedstorage-neoforge-2.0.9.jar')
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+    exclude '**/*.bbmodel'
+    exclude '**/.cache/**'
+}
+
+var generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    var replaceProperties = [
+        minecraft_version: minecraft_version,
+        minecraft_version_range: minecraft_version_range,
+        neo_version: neo_version,
+        loader_version_range: loader_version_range,
+        mod_id: mod_id,
+        mod_name: mod_name,
+        mod_license: mod_license,
+        mod_version: mod_version,
+        mod_authors: mod_authors,
+        mod_description: mod_description
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs.addAll('-Xlint:deprecation', '-Xlint:unchecked')
+}
+
+jar {
+    manifest {
+        attributes 'Specification-Title': mod_id,
+                   'Specification-Vendor': mod_authors,
+                   'Specification-Version': '1',
+                   'Implementation-Title': project.name,
+                   'Implementation-Version': archiveVersion,
+                   'Implementation-Vendor': mod_authors
+    }
+
+    from('LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE_redonestorage' }
+    }
+    from('NOTICE.md') {
+        into 'META-INF'
+        rename { 'NOTICE_redonestorage.md' }
+    }
+}
+
+// Prevent split-package crashes with Refined Storage at runtime.
+tasks.register('verifyNoRefinedStoragePackages') {
+    dependsOn tasks.named('jar')
+    doLast {
+        def outputJar = tasks.named('jar').get().archiveFile.get().asFile
+        def copiedRsClasses = zipTree(outputJar).matching { include 'com/refinedmods/**' }.files
+        if (!copiedRsClasses.isEmpty()) {
+            throw new GradleException("Redone Storage JAR contains Refined Storage packages: ${copiedRsClasses}")
+        }
+    }
+}
+
+tasks.named('build') {
+    dependsOn tasks.named('verifyNoRefinedStoragePackages')
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "redonestorage:multiblock_frame",
+    "redonestorage:multiblock_heat",
+    "redonestorage:multiblock_cpu",
+    "redonestorage:multiblock_storage",
+    "redonestorage:advanced_wireless_transmitter"
+  ]
+}

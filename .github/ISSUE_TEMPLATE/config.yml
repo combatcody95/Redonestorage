@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Original Reborn Storage project
+    url: https://github.com/TechReborn/RebornStorage
+    about: Use this only for issues involving the original unmodified project.

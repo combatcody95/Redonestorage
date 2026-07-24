@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FIF",
+    "ISI",
+    "FIF"
+  ],
+  "key": {
+    "F": {
+      "item": "redonestorage:multiblock_frame"
+    },
+    "I": {
+      "item": "refinedstorage:quartz_enriched_iron"
+    },
+    "S": {
+      "tag": "c:silicon"
+    }
+  },
+  "result": {
+    "id": "redonestorage:multiblock_heat"
+  }
+}

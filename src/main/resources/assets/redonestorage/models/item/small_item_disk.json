@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "redonestorage:item/disks/small_item_disk"
+  }
+}

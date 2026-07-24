@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Redone Storage is an ongoing storage and autocrafting expansion for modern Minecraft versions and Refined Storage.">
+  <title>Redone Storage</title>
+  <link rel="icon" href="assets/redone-storage-logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop"></div>
+  <main>
+    <section class="hero">
+      <img class="logo" src="assets/redone-storage-logo.png" alt="Redone Storage logo">
+      <div class="hero-copy">
+        <p class="eyebrow">Ongoing Reborn Storage continuation</p>
+        <h1>Redone Storage</h1>
+        <p class="tagline">Massive storage disks, multiblock autocrafting, and advanced wireless tools—maintained for current and future Minecraft releases.</p>
+        <div class="actions">
+          <a id="releases-link" class="button primary" href="#">Downloads</a>
+          <a id="source-link" class="button" href="#">Source Code</a>
+          <a id="issues-link" class="button" href="#">Report a Bug</a>
+        </div>
+        <p class="alpha">Alpha software: back up important worlds before updating.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Features</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="icon">▦</span>
+          <h3>Large Storage Disks</h3>
+          <p>Expanded item and fluid disk tiers for large Refined Storage networks.</p>
+        </article>
+        <article class="card">
+          <span class="icon">⬡</span>
+          <h3>Multiblock Autocrafting</h3>
+          <p>Build a scalable crafter with more pattern capacity and CPU-based speed.</p>
+        </article>
+        <article class="card">
+          <span class="icon">⌁</span>
+          <h3>Wireless Expansion</h3>
+          <p>Extended transmitter range and an all-in-one Super Wireless Grid.</p>
+        </article>
+        <article class="card">
+          <span class="icon">↻</span>
+          <h3>Persistent Crafting</h3>
+          <p>Autocrafting tasks survive world saves and reloads.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="requirements">
+      <div>
+        <h2>Current 1.21.1 Requirements</h2>
+        <ul>
+          <li>Minecraft 1.21.1</li>
+          <li>NeoForge 21.1.234 or newer</li>
+          <li>Refined Storage 2.0.9</li>
+          <li>PolyLib</li>
+          <li>Architectury API</li>
+          <li>Java 21</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Current Release</h2>
+        <p class="version">6.0.0-alpha.6</p>
+        <p>This is the first supported release. Future Minecraft versions will receive their own compatible Redone Storage releases.</p>
+      </div>
+    </section>
+
+    <section class="credits">
+      <h2>Credits</h2>
+      <p>Based on the original Reborn Storage work by Modmuss50, Gigabit101, and contributors. Redone Storage preserves the original MIT attribution.</p>
+      <a href="https://github.com/TechReborn/RebornStorage">View the original source project</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Redone Storage is not affiliated with Mojang or Microsoft.</p>
+  </footer>
+
+  <script>
+    (() => {
+      const isPages = location.hostname.endsWith(".github.io");
+      if (!isPages) return;
+      const owner = location.hostname.split(".")[0];
+      const repo = location.pathname.split("/").filter(Boolean)[0] || "RedoneStorage";
+      const base = `https://github.com/${owner}/${repo}`;
+      document.getElementById("source-link").href = base;
+      document.getElementById("issues-link").href = `${base}/issues`;
+      document.getElementById("releases-link").href = `${base}/releases`;
+    })();
+  </script>
+</body>
+</html>

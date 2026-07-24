@@ -1,0 +1,6 @@
+{
+  "parent": "redonestorage:block/wireless_transmitter",
+  "textures": {
+    "cutout": "redonestorage:block/wireless_transmitter/cutouts/light_blue"
+  }
+}

@@ -1,0 +1,52 @@
+package net.gigabit101.redonestorage.wireless;
+
+import com.refinedmods.refinedstorage.common.api.support.slotreference.SlotReference;
+import com.refinedmods.refinedstorage.common.grid.CraftingGrid;
+import com.refinedmods.refinedstorage.common.grid.GridData;
+import com.refinedmods.refinedstorage.common.grid.WirelessGridData;
+import com.refinedmods.refinedstorage.common.support.containermenu.ExtendedMenuProvider;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamEncoder;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+
+import javax.annotation.Nullable;
+
+final class SuperWirelessCraftingGridMenuProvider implements ExtendedMenuProvider<WirelessGridData> {
+    private final Component name;
+    private final CraftingGrid grid;
+    private final SlotReference slotReference;
+
+    SuperWirelessCraftingGridMenuProvider(final Component name,
+                                          final CraftingGrid grid,
+                                          final SlotReference slotReference) {
+        this.name = name;
+        this.grid = grid;
+        this.slotReference = slotReference;
+    }
+
+    @Override
+    public WirelessGridData getMenuData() {
+        return new WirelessGridData(GridData.of(grid), slotReference);
+    }
+
+    @Override
+    public StreamEncoder<RegistryFriendlyByteBuf, WirelessGridData> getMenuCodec() {
+        return WirelessGridData.STREAM_CODEC;
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return name;
+    }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(final int containerId,
+                                            final Inventory inventory,
+                                            final Player player) {
+        return new SuperWirelessCraftingGridMenu(containerId, inventory, grid, slotReference);
+    }
+}
