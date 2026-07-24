@@ -14,6 +14,7 @@ import com.refinedmods.refinedstorage.common.grid.WirelessGridData;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -30,6 +31,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.List;
 
 public final class ModContent {
+    private static boolean legacyAliasesAdded;
     public static final DeferredRegister<Block> BLOCKS =
         DeferredRegister.create(BuiltInRegistries.BLOCK, Constants.MOD_ID);
     public static final DeferredRegister<Item> ITEMS =
@@ -168,11 +170,40 @@ public final class ModContent {
     }
 
     public static void register(final IEventBus eventBus) {
+        addLegacyNamespaceAliases();
         BLOCKS.register(eventBus);
         ITEMS.register(eventBus);
         BLOCK_ENTITIES.register(eventBus);
         MENUS.register(eventBus);
         CREATIVE_TABS.register(eventBus);
+    }
+
+    /**
+     * Keeps worlds and inventories created by the earlier {@code rebornstorage} builds compatible.
+     * NeoForge resolves each legacy registry name to the matching Redone Storage entry.
+     */
+    private static void addLegacyNamespaceAliases() {
+        if (legacyAliasesAdded) {
+            return;
+        }
+        legacyAliasesAdded = true;
+
+        addLegacyAliases(BLOCKS);
+        addLegacyAliases(ITEMS);
+        addLegacyAliases(BLOCK_ENTITIES);
+        addLegacyAliases(MENUS);
+        addLegacyAliases(CREATIVE_TABS);
+    }
+
+    private static <T> void addLegacyAliases(final DeferredRegister<T> register) {
+        for (DeferredHolder<T, ? extends T> entry : register.getEntries()) {
+            final ResourceLocation targetId = entry.getId();
+            final ResourceLocation legacyId = ResourceLocation.fromNamespaceAndPath(
+                Constants.LEGACY_MOD_ID,
+                targetId.getPath()
+            );
+            register.addAlias(legacyId, targetId);
+        }
     }
 
     public static boolean isMultiblockPart(final Block block) {
